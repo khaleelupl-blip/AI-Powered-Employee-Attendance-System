@@ -1,0 +1,8 @@
+{
+  "name": "AI-Powered Employee Attendance System",
+  "description": "An advanced, AI-enhanced employee attendance and management system built with React, TypeScript, and Tailwind CSS. It features role-based dashboards, geolocation tracking, selfie verification for check-ins, and automated reporting, providing a seamless experience for employees, managers, and administrators.",
+  "requestFramePermissions": [
+    "camera",
+    "geolocation"
+  ]
+}
