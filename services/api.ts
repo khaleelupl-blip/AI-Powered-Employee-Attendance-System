@@ -251,7 +251,8 @@ export const deleteDepartment = async (deptId: string): Promise<{ success: boole
 };
 
 export const getAllManagers = async (): Promise<User[]> => {
-    return delay(usersData.filter(u => u.role === 'manager' && u.status === 'active'));
+    // Admin can assign any active employee or manager as a department manager.
+    return delay(usersData.filter(u => (u.role === 'manager' || u.role === 'employee') && u.status === 'active'));
 };
 
 

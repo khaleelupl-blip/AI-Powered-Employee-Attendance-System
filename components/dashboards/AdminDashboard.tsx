@@ -111,13 +111,27 @@ const AdminDashboard: React.FC = () => {
   };
   
   const handleSaveDepartment = async (department: Department) => {
+      // Save the department (add new or update existing)
       if(editingDepartment) {
           await api.updateDepartment(department);
       } else {
           await api.addDepartment(department);
       }
+
+      // If a manager was assigned, ensure their role is set to 'manager'
+      if (department.manager) {
+          // Find the full user object from the state
+          const managerUser = employees.find(e => e.username === department.manager);
+          
+          // If we found the user and their role isn't already 'manager', update it
+          if (managerUser && managerUser.role !== 'manager') {
+              const updatedUser: User = { ...managerUser, role: 'manager' };
+              await api.updateEmployee(updatedUser);
+          }
+      }
+
       setIsDepartmentModalOpen(false);
-      fetchData();
+      fetchData(); // Refresh all admin data
   };
 
   const handleDeleteEmployee = (username: string) => {

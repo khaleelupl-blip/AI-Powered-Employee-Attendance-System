@@ -54,8 +54,8 @@ const DepartmentModal: React.FC<DepartmentModalProps> = ({ isOpen, onClose, onSa
             </div>
              <div>
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Manager</label>
-                <select name="manager" value={formData.manager} onChange={handleChange} required className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 shadow-sm">
-                    <option value="">Select a manager</option>
+                <select name="manager" value={formData.manager} onChange={handleChange} className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 dark:bg-gray-700 shadow-sm">
+                    <option value="">-- No Manager --</option>
                     {managers.map(m => <option key={m.username} value={m.username}>{m.fullName}</option>)}
                 </select>
             </div>
